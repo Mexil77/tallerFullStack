@@ -1,4 +1,4 @@
-function MyHeader({ userNote, setUser }) {
+function MyHeader({ userNote, setUser, userMax }) {
 	return (
 		<div
 			style={{
@@ -10,7 +10,7 @@ function MyHeader({ userNote, setUser }) {
 		>
 			<button
 				onClick={() => {
-					userNote > 1 && setUser(userNote - 1); //No recomendable
+					userNote > 1 ? setUser(userNote - 1) : '';
 				}}
 			>
 				-
@@ -18,7 +18,7 @@ function MyHeader({ userNote, setUser }) {
 			<h1>User: {userNote}</h1>
 			<button
 				onClick={() => {
-					userNote < 11 ? setUser(userNote + 1) : ""; //Forma Recomendable
+					userNote < userMax ? setUser(userNote + 1) : '';
 				}}
 			>
 				+
