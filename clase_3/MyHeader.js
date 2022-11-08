@@ -1,9 +1,16 @@
 function MyHeader({ userNote, setUser }) {
 	return (
-		<div style={{ display: "flex", justifyContent: "center" }}>
+		<div
+			style={{
+				display: "flex",
+				justifyContent: "center",
+				width: "50%",
+				backgroundColor: "#a510af",
+			}}
+		>
 			<button
 				onClick={() => {
-					userNote > 1 && setUser(userNote - 1);
+					userNote > 1 && setUser(userNote - 1); //No recomendable
 				}}
 			>
 				-
@@ -11,7 +18,7 @@ function MyHeader({ userNote, setUser }) {
 			<h1>User: {userNote}</h1>
 			<button
 				onClick={() => {
-					setUser(userNote + 1);
+					userNote < 11 ? setUser(userNote + 1) : ""; //Forma Recomendable
 				}}
 			>
 				+
