@@ -1,4 +1,5 @@
-function MyForm({ data, setData }) {
+function MyForm({ data, setData, setUserMax}) {
+	const [userId, setUserid] = React.useState("");
 	const [title, setTitle] = React.useState("");
 	const [body, setBody] = React.useState("");
 
@@ -18,12 +19,16 @@ function MyForm({ data, setData }) {
 				style={{ display: "flex", flexDirection: "column", width: "50%" }}
 			>
 				<input
+					type='number'
+					placeholder='ID de Usuario'
+					value={userId}
+					onChange={(e) => setUserid(e.target.value)}
+				/>
+				<input
 					type="text"
 					placeholder="Titulo"
 					value={title}
-					onChange={(e) => {
-						setTitle(e.target.value);
-					}}
+					onChange={(e) => setTitle(e.target.value)}
 				/>
 				<input
 					type="text"
@@ -37,12 +42,13 @@ function MyForm({ data, setData }) {
 						setData([
 							...data,
 							{
-								userId: 11,
+								userId: Number(userId),
 								id: data.length + 1,
 								title,
 								body,
 							},
 						]);
+						setUserMax(userId);
 						setTitle("");
 						setBody("");
 					}}
